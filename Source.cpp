@@ -15,9 +15,9 @@ void push(int *a, int value, int &i)
 
 void pop(int *a, int &i)
 {
-	for (int j = 0; j < (i-1); j++)
-		a[j] = a[j + 1];
 	int b = i - 1;
+	for (int j = 0; j < b; j++)
+		a[j] = a[j + 1];
 	a = (int*)realloc(a, b * sizeof(int));
 	i--;
 }
