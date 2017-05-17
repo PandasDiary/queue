@@ -45,6 +45,7 @@ int main()
 		case 3:
 			for (int j = 0; j < i; j++)
 				printf("%d ", a[j]);
+			printf("\n");
 			break;
 		default:
 			printf("Wrong command!\n");
