@@ -11,21 +11,40 @@ void push(int *a, int value, int &i)
 	}
 	a[i] = value;
 	i++;
+	return;
 }
 
 void pop(int *a, int &i)
 {
-	int b = i - 1;
+	if (a == NULL)
+		return;
+	int b = i-1;
 	for (int j = 0; j < b; j++)
 		a[j] = a[j + 1];
+	a[b + 1] = NULL;
 	a = (int*)realloc(a, b * sizeof(int));
 	i--;
+	return;
+}
+int* pop1(int *a, int &i)
+{
+	if (i == 0)
+	{
+		printf("queue is empty\n");
+		return NULL;
+	}
+	int *b;
+	b = (int*)malloc(i * sizeof(int));
+	i--;
+	for (int j = 0; j < i; j++)
+		b[j] = a[j+1];
+	return b;
 }
 
 int main()
 {
 	int *a = NULL, i = 0, elem, k;
-	a = (int*)realloc(a, sizeof(int));
+	a = (int*)malloc(sizeof(int));
 	do
 	{
 		printf("1 - Add element\n");
@@ -40,7 +59,7 @@ int main()
 			push(a, elem, i);
 			break;
 		case 2:
-			pop(a, i);
+			a = pop1(a, i);
 			break;
 		case 3:
 			for (int j = 0; j < i; j++)
@@ -51,5 +70,6 @@ int main()
 			printf("Wrong command!\n");
 		}
 	} while (k != 5);
+	free(a);
 	return 0;
 }
