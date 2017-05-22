@@ -2,67 +2,47 @@
 #include <stdio.h>
 #include <malloc.h>
 
-void push(int *a, int value, int &i)
+void push(int *a, int elem, int &i)
 {
-	if (!a[i])
-	{
-		int b = i + 1;
-		a = (int*)realloc(a, b * sizeof(int));
-	}
-	a[i] = value;
+	int b = i + 1;
+	a = (int*)realloc(a, b * sizeof(int));
+	a[i] = elem;
 	i++;
-	return;
 }
 
-void pop(int *a, int &i)
-{
-	if (a == NULL)
-		return;
-	int b = i-1;
-	for (int j = 0; j < b; j++)
-		a[j] = a[j + 1];
-	a[b + 1] = NULL;
-	a = (int*)realloc(a, b * sizeof(int));
-	i--;
-	return;
-}
-int* pop1(int *a, int &i)
-{
-	if (i == 0)
-	{
-		printf("queue is empty\n");
-		return NULL;
-	}
-	int *b;
-	b = (int*)malloc(i * sizeof(int));
-	i--;
-	for (int j = 0; j < i; j++)
-		b[j] = a[j+1];
-	return b;
-}
 
 int main()
 {
-	int *a = NULL, i = 0, elem, k;
+	int *a, i = 0, elem, k, b;
 	a = (int*)malloc(sizeof(int));
 	do
 	{
 		printf("1 - Add element\n");
 		printf("2 - Del element\n");
-		printf("3 - Print list\n");
+		printf("3 - Print queue\n");
 		scanf("%i", &k);
 		switch (k)
 		{
 		case 1:
 			printf("What's you want to add? \n");
 			scanf("%d", &elem);
-			push(a, elem, i);
+			b = i + 1;
+			a = (int*)realloc(a, b * sizeof(int));//Увеличение размера массива на 1 элемент
+			a[i] = elem;//Запись следующего элемента в очередь
+			i++;
+			//push(a, elem, i);
 			break;
 		case 2:
-			a = pop1(a, i);
+			if (i > 0)
+			{
+				i--;
+				for (int j = 0; j < i; j++)//Сдвигаем все элементы массива на 1 влево
+					a[j] = a[j + 1];
+				a = (int*)realloc(a, i * sizeof(int));//Уменьшаем размер массива на 1 
+			}
 			break;
 		case 3:
-			for (int j = 0; j < i; j++)
+			for (int j = 0; j < i; j++)//Вывод всей очереди
 				printf("%d ", a[j]);
 			printf("\n");
 			break;
