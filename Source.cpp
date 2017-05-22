@@ -2,14 +2,6 @@
 #include <stdio.h>
 #include <malloc.h>
 
-void push(int *a, int elem, int &i)
-{
-	int b = i + 1;
-	a = (int*)realloc(a, b * sizeof(int));
-	a[i] = elem;
-	i++;
-}
-
 
 int main()
 {
@@ -26,11 +18,10 @@ int main()
 		case 1:
 			printf("What's you want to add? \n");
 			scanf("%d", &elem);
-			//b = i + 1;
-			//a = (int*)realloc(a, b * sizeof(int));//Увеличение размера массива на 1 элемент
-			//a[i] = elem;//Запись следующего элемента в очередь
-			//i++;
-			push(a, elem, i);
+			b = i + 1;
+			a = (int*)realloc(a, b * sizeof(int));//Увеличение размера массива на 1 элемент
+			a[i] = elem;//Запись следующего элемента в очередь
+			i++;
 			break;
 		case 2:
 			if (i > 0)
