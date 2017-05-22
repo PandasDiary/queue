@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <malloc.h>
 
@@ -26,23 +26,23 @@ int main()
 		case 1:
 			printf("What's you want to add? \n");
 			scanf("%d", &elem);
-			b = i + 1;
-			a = (int*)realloc(a, b * sizeof(int));//Óâåëè÷åíèå ðàçìåðà ìàññèâà íà 1 ýëåìåíò
-			a[i] = elem;//Çàïèñü ñëåäóþùåãî ýëåìåíòà â î÷åðåäü
-			i++;
-			//push(a, elem, i);
+			//b = i + 1;
+			//a = (int*)realloc(a, b * sizeof(int));//Ð£Ð²ÐµÐ»Ð¸Ñ‡ÐµÐ½Ð¸Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð° Ð¼Ð°ÑÑÐ¸Ð²Ð° Ð½Ð° 1 ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚
+			//a[i] = elem;//Ð—Ð°Ð¿Ð¸ÑÑŒ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ð² Ð¾Ñ‡ÐµÑ€ÐµÐ´ÑŒ
+			//i++;
+			push(a, elem, i);
 			break;
 		case 2:
 			if (i > 0)
 			{
 				i--;
-				for (int j = 0; j < i; j++)//Ñäâèãàåì âñå ýëåìåíòû ìàññèâà íà 1 âëåâî
+				for (int j = 0; j < i; j++)//Ð¡Ð´Ð²Ð¸Ð³Ð°ÐµÐ¼ Ð²ÑÐµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ Ð¼Ð°ÑÑÐ¸Ð²Ð° Ð½Ð° 1 Ð²Ð»ÐµÐ²Ð¾
 					a[j] = a[j + 1];
-				a = (int*)realloc(a, i * sizeof(int));//Óìåíüøàåì ðàçìåð ìàññèâà íà 1 
+				a = (int*)realloc(a, i * sizeof(int));//Ð£Ð¼ÐµÐ½ÑŒÑˆÐ°ÐµÐ¼ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð° Ð½Ð° 1 
 			}
 			break;
 		case 3:
-			for (int j = 0; j < i; j++)//Âûâîä âñåé î÷åðåäè
+			for (int j = 0; j < i; j++)//Ð’Ñ‹Ð²Ð¾Ð´ Ð²ÑÐµÐ¹ Ð¾Ñ‡ÐµÑ€ÐµÐ´Ð¸
 				printf("%d ", a[j]);
 			printf("\n");
 			break;
